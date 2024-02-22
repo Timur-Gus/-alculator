@@ -16,20 +16,25 @@ public class CalculatorController {
     }
 
     @GetMapping
-    public String hello(){return "<font color=#9932CC><h1>Добро пожаловать в калькулятор</font></h1>";}
+    public String hello() {
+        return "<h1>Добро пожаловать в калькулятор</h1>";
+    }
 
     @GetMapping(path = "/plus")
     public String plus(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         return calculatorService.plus(num1, num2);
     }
+
     @GetMapping(path = "/minus")
     public String minus(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         return calculatorService.minus(num1, num2);
     }
+
     @GetMapping(path = "/multiply")
     public String multiply(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         return calculatorService.multiply(num1, num2);
     }
+
     @GetMapping(path = "/divide")
     public String divide(@RequestParam("num1") Double num1, @RequestParam("num2") Double num2) {
         return calculatorService.divide(num1, num2);

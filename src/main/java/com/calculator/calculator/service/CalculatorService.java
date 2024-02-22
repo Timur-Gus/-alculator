@@ -6,18 +6,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CalculatorService implements calculatorInterface {
-@Override
-public String plus(Double num1, Double num2) {
-    if(num1 == null || num2 == null){
-        throw new ValueNotFoundException();
+    @Override
+    public String plus(Double num1, Double num2) {
+        if (num1 == null || num2 == null) {
+            throw new ValueNotFoundException();
+        }
+        Double result = num1 + num2;
+        return num1 + " + " + num2 + " = " + result;
     }
-    Double result = num1 + num2;
-    return num1 + " + " + num2 + " = " + result;
-}
 
     @Override
     public String minus(Double num1, Double num2) {
-        if(num1 == null || num2 == null){
+        if (num1 == null || num2 == null) {
             throw new ValueNotFoundException();
         }
         Double result = num1 - num2;
@@ -26,7 +26,7 @@ public String plus(Double num1, Double num2) {
 
     @Override
     public String multiply(Double num1, Double num2) {
-        if(num1 == null || num2 == null){
+        if (num1 == null || num2 == null) {
             throw new ValueNotFoundException();
         }
         Double result = num1 * num2;
@@ -36,11 +36,13 @@ public String plus(Double num1, Double num2) {
     @Override
     public String divide(Double num1, Double num2) {
         Double result;
-        if(num1 == null || num2 == null || num2 == 0){
+        if (num1 == null || num2 == null) {
             throw new ValueNotFoundException();
         }
-            result = num1 / num2;
-            return num1 + " / " + num2 + " = " + result;
-
+        if (num2 == 0) {
+            throw new IllegalArgumentException("Деление на ноль невозможно");
+        }
+        result = num1 / num2;
+        return num1 + " / " + num2 + " = " + result;
     }
 }
